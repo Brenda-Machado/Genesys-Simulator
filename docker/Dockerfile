@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:bookworm-slim
 
 # Versão do Dockerfile
 ARG VERSION=0.1.0
@@ -32,9 +32,8 @@ version=$VERSION
 # Instala todas as bibliotecas necessárias
 RUN echo "Instalando pre-requisitos" && \
     apt-get update && \
-    apt-get upgrade --assume-yes && \
-DEBIAN_FRONTEND=noninteractive apt-get --assume-yes dist-upgrade && \
-    DEBIAN_FRONTEND=noninteractive apt-get --assume-yes install \
+    DEBIAN_FRONTEND=noninteractive apt-get --assume-yes --no-install-recommends install \
+        build-essential \
         build-essential \
         curl \
         git \
@@ -44,7 +43,12 @@ DEBIAN_FRONTEND=noninteractive apt-get --assume-yes dist-upgrade && \
         xdg-utils \
         qtcreator \
         qtbase5-dev \
-        qttools5-*
+        qttools5-dev \
+        ca-certificates \
+        gnupg \
+        lsb-release \
+        qt6-base-dev \
+        qt6-tools-dev 
         
 # Diminui o tamanho da imagem
 RUN echo "Limpando" && \
@@ -59,11 +63,11 @@ RUN echo "Preparando GitHub CLI" && \
     chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg && \
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null && \
     apt-get update && \
-    apt-get install gh -y
+    apt-get install --assume-yes --no-install-recommends gh
 
 # Clona o GenESyS
 RUN echo "Clonando GeNESyS" && \
-    git clone $GENESYS_REPO $GENESYS_ROOT
+    git clone --depth 1 --single-branch --branch $GENESYS_BRANCH $GENESYS_REPO $GENESYS_ROOT
     
 # Copia o script de inicialização para dentro do container
 COPY scripts/entrypoint.sh /usr/local/bin/entrypoint.sh 
