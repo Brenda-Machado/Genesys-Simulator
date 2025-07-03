@@ -95,7 +95,7 @@ GENESYS_BRANCH=master
 | `GENESYS_BRANCH` | `master` | Branch do repositório |
 | `MESA_LOADER_DRIVER_OVERRIDE` | `zink` | Driver gráfico Mesa |
 
-## 🖥️ Execução Remota (Sem Makefile)
+## Execução Remota (Sem Makefile)
 
 ### Preparação
 
