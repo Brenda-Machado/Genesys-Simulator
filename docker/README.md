@@ -10,6 +10,8 @@ Um ambiente Docker containerizado para desenvolvimento e execução do **GenESyS
 
 - Docker Engine >= 20.10
 
+Disponível em: https://docs.docker.com/engine/install/
+
 ## Guia do Usuário
 
 ### 1. Configuração Inicial
