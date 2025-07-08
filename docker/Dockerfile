@@ -42,13 +42,17 @@ RUN echo "Instalando pre-requisitos" && \
         libgl1-mesa-glx \
         xdg-utils \
         qtcreator \
-        qtbase5-dev \
-        qttools5-dev \
+        #qtbase5-dev \
+        #qttools5-dev \
         ca-certificates \
         gnupg \
         lsb-release \
         qt6-base-dev \
-        qt6-tools-dev 
+        qt6-base-dev-tools \
+        qt6-tools-dev \
+        qt6-tools-dev-tools \
+        designer-qt6 \
+        qt6-l10n-tools
         
 # Diminui o tamanho da imagem
 RUN echo "Limpando" && \
