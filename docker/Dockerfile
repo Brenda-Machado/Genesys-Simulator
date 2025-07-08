@@ -24,8 +24,8 @@ ENV GENESYS_GUI_SUBPATH=source/applications/gui/qt/GenesysQtGUI/build-GenesysQtG
 # Sub-caminho onde está o binário do Genesys sem GUI
 ENV GENESYS_NOGUI_SUBPATH=GenesysShell
 
-LABEL maintainer=$GENESYS_USER \
-url=$GENESYS_REPO \
+# maintainer=$GENESYS_USER \
+LABEL url=$GENESYS_REPO \
 name="docker-genesys" \
 version=$VERSION
 
