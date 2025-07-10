@@ -42,8 +42,6 @@ RUN echo "Instalando pre-requisitos" && \
         libgl1-mesa-glx \
         xdg-utils \
         qtcreator \
-        #qtbase5-dev \
-        #qttools5-dev \
         ca-certificates \
         gnupg \
         lsb-release \
@@ -52,6 +50,7 @@ RUN echo "Instalando pre-requisitos" && \
         qt6-tools-dev \
         qt6-tools-dev-tools \
         designer-qt6 \
+        libqt6opengl6-dev \
         qt6-l10n-tools
         
 # Diminui o tamanho da imagem
