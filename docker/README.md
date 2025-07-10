@@ -97,6 +97,66 @@ GENESYS_BRANCH=master
 | `GENESYS_BRANCH` | `master` | Branch do repositório |
 | `MESA_LOADER_DRIVER_OVERRIDE` | `zink` | Driver gráfico Mesa |
 
+## Importação e Exportação de Modelos
+
+Para facilitar o trabalho com arquivos de modelo (`.gen`) entre o seu host e o container Docker, usamos um diretório compartilhado que funciona de forma **bidirecional**. Ou seja:
+
+- Tudo o que você colocar na pasta do **host** aparece imediatamente dentro do container.  
+- Tudo o que for gerado ou salvo no container nessa pasta aparece de volta no host.
+
+### 1. Defina ou sobrescreva o caminho no host
+
+Por convenção, usamos:
+
+```bash
+~/genesys-models
+```
+
+Caso queira outro local, basta exportar antes:
+
+```bash
+export HOST_MODELS_DIR="/caminho/para/seus/modelos"
+```
+Se `HOST_MODELS_DIR` não estiver definido, o sistema assume `$HOME/genesys-models`.
+
+### 2. Crie a pasta no seu sistema
+
+Para criar a pasta no seu sistema, basta executar uma única vez:
+
+```bash
+mkdir -p ~/genesys-models
+```
+
+### 3. Importe modelos para o GenESyS
+
+1. Coloque qualquer arquivo .gen na pasta do host:
+
+```bash
+cp meu_modelo.gen ~/genesys-models
+```
+
+2. E dentro do GenESyS, abra ou importe o modelo de:
+
+```bash
+/home/genesys/remote/models/meu_modelo.gen
+```
+
+### 4. Exporte modelos gerados pelo GenESyS
+
+Após obter ou gerar um novo .gen dentro do container:
+
+1. Salve-o na pasta interna:
+
+```bash
+/home/genesys/remote/models/novo_modelo.gen
+```
+
+2. No seu host, encontre-o em:
+
+```bash
+ls ~/genesys-models/novo_modelo.gen"
+```
+
 ## Execução Remota (Sem Makefile)
 
 ### Preparação
