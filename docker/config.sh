@@ -8,7 +8,7 @@
 REMOTE=0
 
 # Driver gráfico
-MESA_LOADER_DRIVER_OVERRIDE=zink
+#MESA_LOADER_DRIVER_OVERRIDE=zink
 
 
 ### Configurações da Execução Docker
